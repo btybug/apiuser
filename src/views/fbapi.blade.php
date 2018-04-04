@@ -1,4 +1,6 @@
-{!! Form::model($data,['class' => 'form-horizontal']) !!}
+@extends('btybug::layouts.admin')
+@section('content')
+    {!! Form::model($data,['class' => 'form-horizontal']) !!}
     <fieldset>
         <!-- Form Name -->
         <legend>FB Settings</legend>
@@ -37,4 +39,7 @@
         </div>
 
     </fieldset>
-{!! Form::close() !!}
+    {!! Form::close() !!}
+@stop
+
+
