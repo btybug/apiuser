@@ -24,3 +24,5 @@
 
 //Routes
     Route::get('/', 'IndexController@getIndex',true)->name('apiuser_index');
+    Route::get('/settings', 'IndexController@getSettings',true)->name('apiuser_settings');
+    Route::post('/settings', 'IndexController@postSettings')->name('apiuser_settings_post');

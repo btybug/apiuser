@@ -14,3 +14,5 @@ addProvider('BtyBugHook\ApiUser\Providers\ModuleServiceProvider');
 //
 //    return $loginUrl;
 //}
+
+//BBregistreApi('FBlogin','admin/apiuser/settings');

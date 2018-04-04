@@ -13,9 +13,7 @@ class Autoload
 {
 // this function will called only install time
     public function up($config){
-    	// Testing commits
-//        Test::migrate();
-//        Test::seed();
+        BBregistreApi('FBlogin','admin/apiuser/settings');
     }
     // this function will called only uninstall time
     public function down($config){
