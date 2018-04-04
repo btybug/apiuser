@@ -18,23 +18,25 @@ class IndexController extends Controller
 
         if(count($userData)){
             $user = $userRepository->findBy('email',$userData['email']);
-            $message= 'already have user';
             if(! $user){
                 $user = $userRepository->create([
                     'username' => $userData['email'],
                     'email' => $userData['email'],
                     'f_name' => $userData['first_name'],
                     'l_name' => $userData['last_name'],
+                    'password' => bcrypt('secret123')
                 ]);
-                $message= 'registered new user';
-
             }
 
-            auth()->login($user);
+            if($user){
+                \Auth::loginUsingId($user->id);
+                return \Response::json(['error' => false,'message' =>'User Logged IN']);
+            }
+
         }
 
 
-        return \Response::json(['error' => false,'message' =>$message]);
+        return \Response::json(['error' => true,'message' =>'Login Faild !!!']);
     }
 
     public function getSettings()
