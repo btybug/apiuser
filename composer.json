@@ -8,7 +8,9 @@
             "email": "edo.terakyan@gmail.com"
         }
     ],
-    "require": {
+    "require-dev": {
+        "facebook/php-sdk-v4": "~4.1.0"
+    },"require": {
         "facebook/php-sdk-v4": "~4.1.0"
     },
     "autoload": {
