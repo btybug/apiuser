@@ -13,6 +13,6 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::get('/bty-api', function (Request $request) {
-    // return $request->edo();
-})->middleware('auth:api');
+
+
+Route::get('/callback', 'IndexController@getCallback',true)->name('apiuser_callback');

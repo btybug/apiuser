@@ -23,4 +23,4 @@
 
 
 //Routes
-Route::get('/', 'IndexController@getIndex',true)->name('apiuser_index');
+    Route::get('/', 'IndexController@getIndex',true)->name('apiuser_index');

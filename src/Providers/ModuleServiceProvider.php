@@ -37,7 +37,7 @@ class ModuleServiceProvider extends ServiceProvider
             "is_core" => "yes",
             "children" => [
                 [
-                    "title" => "Requested",
+                    "title" => "Index",
                     "custom-link" => "/admin/apiuser",
                     "icon" => "fa fa-angle-right",
                     "is_core" => "yes"

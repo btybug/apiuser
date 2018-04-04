@@ -1,14 +1,16 @@
 {
     "name": "btybug.hook/apiuser",
     "type": "plugin",
-    "route": "bty-apiuser",
+    "route": "apiuser",
     "authors": [
         {
             "name": "terakyan",
             "email": "edo.terakyan@gmail.com"
         }
     ],
-    "require": {},
+    "require": {
+        "facebook/php-sdk-v4": "~4.1.0"
+    },
     "autoload": {
         "psr-4": {
             "BtyBugHook\\ApiUser\\": "src/"
