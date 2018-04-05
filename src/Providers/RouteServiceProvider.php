@@ -87,6 +87,7 @@ class RouteServiceProvider extends ServiceProvider
             'domain' => (string)env('DOMAIN')
         ], function ($router) {
             Route::group([
+                'middleware' => 'web',
                 'prefix' => 'apiuser-api',
                 'namespace' => $this->namespace,
             ], function ($router) {

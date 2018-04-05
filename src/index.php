@@ -7,12 +7,17 @@ addProvider('BtyBugHook\ApiUser\Providers\ModuleServiceProvider');
 function BBfb(){
     $data = json_decode(BBgetApiSettings('FBlogin')->val,true);
     $appID = (isset($data["client_id"])) ?$data["client_id"]: null;
+    $secret = (isset($data["client_secret"])) ?$data["client_secret"]: null;
     return '<a href="#" class="btn btn-primary" onClick="logInWithFacebook()">Log In FB</a>
             <script>
                 logInWithFacebook = function() {
                     FB.login(function(response) {
                         if (response.authResponse) {
-                            getFbUserData();
+                            getFbUserData(response.authResponse);
+                            
+                            $.get("//oauth/access_token", {client_id:"'."$appID".'",client_secret: "'."$secret".'",grant_type:"client_credentials"}, function(data){                           
+                               console.log(response);
+                            });
                             // Now you can redirect the user or do an AJAX request to
                             // a PHP script that grabs the signed request from the cookie.
                         } else {
@@ -21,6 +26,7 @@ function BBfb(){
                     });
                     return false;
                 };
+                
                 window.fbAsyncInit = function() {
                     FB.init({
                         appId: '."$appID".',
@@ -41,16 +47,17 @@ function BBfb(){
             
             
                     // Fetch the user profile data from facebook
-                    function getFbUserData(){
-                        FB.api("/me", {locale: "en_US", fields: "id,first_name,last_name,email,link,gender,locale,picture"},
+                    function getFbUserData(authResponse){
+                        FB.api("/me", {locale: "en_US",fields: "id,first_name,last_name,email,link,gender,locale,picture"},
                             function (response) {
-                                saveUserData(response);
+                            saveUserData(response,authResponse);
+                                
                             });
                     }
             
-                    function saveUserData(userData){
-                        $.get("/apiuser-api/callback", {oauth_provider:"facebook",userData: JSON.stringify(userData)}, function(data){                           
-                            window.location.reload();
+                    function saveUserData(userData,authResponse){
+                        $.get("/apiuser-api/callback", {oauth_provider:"facebook",authResponse:authResponse,userData: JSON.stringify(userData)}, function(data){                           
+                            window.location.href = "/apiuser-api/login/"+data.login;
                         });
                     }
             
