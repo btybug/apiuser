@@ -21,7 +21,7 @@
 
     var globalFacebookShareObject = {
         name: 'TESTING SHARE',
-        link: 'http://albumbugs.bty/admin/uploads/gears/settings/fbshare.default',
+        link: document.URL,
         caption: 'this is caption',
         picture: 'https://static.independent.co.uk/s3fs-public/styles/article_small/public/thumbnails/image/2017/09/12/11/naturo-monkey-selfie.jpg',
         description: 'some descrition here'
