@@ -14,6 +14,5 @@ use Illuminate\Http\Request;
 */
 
 
-
-Route::get('/callback', 'IndexController@getCallback',true)->name('apiuser_callback');
-Route::get('/login/{token}', 'IndexController@getLogin',true)->name('apiuser_login');
+Route::get('/callback', 'IndexController@getCallback', true)->name('apiuser_callback');
+Route::get('/login/{token}', 'IndexController@getLogin', true)->name('apiuser_login');

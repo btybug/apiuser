@@ -1,6 +1,6 @@
 @php
-$connectRepo = new \Btybug\FrontSite\Repository\CmsConnectionsRepository();
-$connects = $connectRepo->pluck('name','id')->toArray();
+    $connectRepo = new \Btybug\FrontSite\Repository\CmsConnectionsRepository();
+    $connects = $connectRepo->pluck('name','id')->toArray();
 @endphp
 <div class="col-md-12">
     <div class="row  visibility-box">
@@ -29,11 +29,6 @@ $connects = $connectRepo->pluck('name','id')->toArray();
         </div>
     </div>
 </div>
-
-
-<script>
-
-</script>
 
 
 

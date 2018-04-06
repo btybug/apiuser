@@ -40,16 +40,16 @@ class IndexController extends Controller
 
 
             if ($user) {
-                    $account = $accountRepository->updateOrCreate(['provider' => 'facebook',
-                        'user_id' => $user->id,],[
-                        'access_token' => $authResponse['accessToken'],
-                        'exp_date' => $authResponse['expiresIn'],
-                        'refresh_token' => $authResponse['signedRequest'],
-                        'provider' => 'facebook',
-                        'user_id' => $user->id,
-                    ]);
+                $account = $accountRepository->updateOrCreate(['provider' => 'facebook',
+                    'user_id' => $user->id,], [
+                    'access_token' => $authResponse['accessToken'],
+                    'exp_date' => $authResponse['expiresIn'],
+                    'refresh_token' => $authResponse['signedRequest'],
+                    'provider' => 'facebook',
+                    'user_id' => $user->id,
+                ]);
 
-                return \Response::json(['error' => false, 'message' => 'User Logged IN','login'=>$account->access_token]);
+                return \Response::json(['error' => false, 'message' => 'User Logged IN', 'login' => $account->access_token]);
             }
 
         }
@@ -70,14 +70,14 @@ class IndexController extends Controller
         return redirect()->back()->with('message', 'Saved');
     }
 
-    public function getLogin($token,SocialAccountRepository $accountRepository)
+    public function getLogin($token, SocialAccountRepository $accountRepository)
     {
-       $account=$accountRepository->findBy('access_token',$token);
-       if($account){
-           \Auth::loginUsingId($account->user_id,true);
-           return redirect('/');
-       }
+        $account = $accountRepository->findBy('access_token', $token);
+        if ($account) {
+            \Auth::loginUsingId($account->user_id, true);
+            return redirect('/');
+        }
 //       dd($account,\Auth::loginUsingId($account->user_id,true));
-       abort(404);
+        abort(404);
     }
 }
