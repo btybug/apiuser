@@ -1,3 +1,7 @@
+@php
+    $connectRepo = new \Btybug\FrontSite\Repository\CmsConnectionsRepository();
+    $connects = $connectRepo->pluck('name','id')->toArray();
+@endphp
 <div class="col-md-12">
     <div class="row  visibility-box">
         <div class="bty-panel-collapse">
@@ -10,16 +14,16 @@
             </div>
             <div id="inputsetting" class="collapse in" aria-expanded="true" style="">
                 <div class="content bty-settings-panel">
-                    {{--<div class="form-group col-md-12">--}}
-                        {{--<div class="col-md-2">--}}
-                            {{--<label>Select studios</label>--}}
-                        {{--</div>--}}
-                        {{--<div class="col-md-9">--}}
-                            {{--{!! Form::select('studios[]',$data,(issetReturn($settings,'studios',[])),--}}
-                            {{--['class' => 'form-control pull-right select-dropdowns','multiple' => 'multiple']) !!}--}}
-                        {{--</div>--}}
-                        {{--<div class="clearfix"></div>--}}
-                    {{--</div>--}}
+                    <div class="form-group col-md-12">
+                        <div class="col-md-2">
+                            <label>Select connection</label>
+                        </div>
+                        <div class="col-md-9">
+                            {!! Form::select('connect',['' => 'Select Connection']+$connects,null,
+                            ['class' => 'form-control pull-right']) !!}
+                        </div>
+                        <div class="clearfix"></div>
+                    </div>
                 </div>
             </div>
         </div>

@@ -1,8 +1,20 @@
+@php
+    $appID = '';
+    $secret = '';
+    if(isset($settings['connect'])){
+        $data = getCmsConnectionByID($settings['connect']);
+        if($data){
+            $appID = $data->client_id;
+            $secret = $data->client_secret;
+        }
+    }
+@endphp
+
 <script>
     window.fbAsyncInit = function() {
         // init the FB JS SDK
         FB.init({
-            appId      : 1481000275258739,                        // App ID from the app dashboard
+            appId      : "{{ $appID }}",                        // App ID from the app dashboard
             status     : true,                                 // Check Facebook Login status
             xfbml      : true                                  // Look for social plugins on the page
         });
@@ -44,4 +56,4 @@
 
 
 
-<button class="btn btn-primary" onclick='shareOnFacebook()'>Share it!</button>
+<button class="btn btn-primary" onclick='shareOnFacebook()'>Share</button>

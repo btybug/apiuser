@@ -1,6 +1,1 @@
-{
-  "title": "Main",
-  "settings": {
-  },
-  "id": "fblogin.default"
-}
+{"title":"Main","settings":{"connect":"1"},"id":"fblogin.default"}

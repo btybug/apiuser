@@ -1,10 +1,12 @@
 @php
     $appID = '';
     $secret = '';
-    if(BBgetApiSettings('FBlogin') && BBgetApiSettings('FBlogin')->val){
-        $data = json_decode(BBgetApiSettings('FBlogin')->val,true);
-        $appID = (isset($data["client_id"])) ?$data["client_id"]: null;
-        $secret = (isset($data["client_secret"])) ?$data["client_secret"]: null;
+    if(isset($settings['connect'])){
+        $data = getCmsConnectionByID($settings['connect']);
+        if($data){
+            $appID = $data->client_id;
+            $secret = $data->client_secret;
+        }
     }
 @endphp
 <a href="#" class="btn btn-primary" onClick="logInWithFacebook()">Log In FB</a>
